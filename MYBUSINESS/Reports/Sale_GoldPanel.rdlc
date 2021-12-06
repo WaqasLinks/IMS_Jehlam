@@ -279,7 +279,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PER PACK</Value>
+                                  <Value>PER BOX</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
@@ -974,6 +974,9 @@
             <Height>0.25in</Height>
             <Width>1.1329in</Width>
             <ZIndex>11</ZIndex>
+            <Visibility>
+              <Hidden>true</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1006,6 +1009,9 @@
             <Height>0.25in</Height>
             <Width>1.25in</Width>
             <ZIndex>12</ZIndex>
+            <Visibility>
+              <Hidden>true</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>

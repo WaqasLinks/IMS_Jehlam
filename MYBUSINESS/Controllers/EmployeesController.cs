@@ -15,10 +15,10 @@ namespace MYBUSINESS.Controllers
         private BusinessContext db = new BusinessContext();
 
         // GET: Employees
-        //public ActionResult Index()
-        //{
-        //    return View(db.Employees.ToList());
-        //}
+        public ActionResult Index()
+        {
+            return View(db.Employees.ToList());
+        }
 
         //// GET: Employees/Details/5
         //public ActionResult Details(decimal id)
@@ -36,27 +36,27 @@ namespace MYBUSINESS.Controllers
         //}
 
         // GET: Employees/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         //// POST: Employees/Create
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Gender,Login,Password,Email,EmployeeTypeId,RightId,RankId,DepartmentId,Designation,Probation,RegistrationDate,Casual,Earned,IsActive,tblCreatedDate,tblModifiedDate")] Employee employee)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Employees.Add(employee);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Gender,Login,Password,Email,EmployeeTypeId,RightId,RankId,DepartmentId,Designation,Probation,RegistrationDate,Casual,Earned,IsActive,tblCreatedDate,tblModifiedDate")] Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Employees.Add(employee);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-        //    return View(employee);
-        //}
+            return View(employee);
+        }
 
         // GET: Employees/Edit/5
         public ActionResult Edit(decimal id)
@@ -108,6 +108,50 @@ namespace MYBUSINESS.Controllers
 
             ViewBag.Error = "Password does not match";
             return View(userChanges);
+        }
+        public ActionResult ChangeUserPassword(decimal id)
+        {
+
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Edit",employee);
+        }
+
+        // POST: Employees/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //public ActionResult Edit([Bind(Include = "Login,Password")] Employee employee)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeUserPassword([Bind(Include = "Id,Login,Password")] Employee userChanges, FormCollection fc)
+        {
+            string oldPass = fc["OldPassword"];
+            string pass1 = fc["Password1"];
+            string pass2 = fc["Password2"];
+
+            //Employee CurrentUser = (Employee)Session["CurrentUser"];
+
+            if (userChanges.Login == userChanges.Login && userChanges.Password == Encryption.Encrypt(oldPass, "d3A#") && pass1 == pass2)
+            {
+                //userChanges.Id = userChanges.Id;
+                //userChanges.Login = userChanges.Login;
+                userChanges.Password = Encryption.Encrypt(pass2, "d3A#");
+
+                if (ModelState.IsValid)
+                {
+                    db.Entry(userChanges).State = EntityState.Modified;
+                    db.SaveChanges();
+                    //Session.Add("CurrentUser", userChanges);
+
+                    return RedirectToAction("Index", "Employees");
+                }
+            }
+
+            ViewBag.Error = "Password does not match";
+            return View("Edit",userChanges);
         }
 
         // GET: Employees/Delete/5

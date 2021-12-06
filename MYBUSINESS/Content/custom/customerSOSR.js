@@ -127,7 +127,7 @@ $(document).ready(function () {
             '<td><input type="text" class="form-control" autocomplete="off" name="name' + txtSerialNum + '" id="name' + txtSerialNum + '"></td>' +
             '<td><input type="text"  class="form-control autocomplete="off" classBGcolor" name="SaleOrderDetail[' + txtSerialNum + '].SalePrice" id="salePrice' + txtSerialNum + '"></td>' +
             '<td><input type="text" class="form-control" autocomplete="off" name="SaleOrderDetail[' + txtSerialNum + '].Quantity" id="quantity' + txtSerialNum + '"></td>' +
-            '<td><select class="form-control" name="SaleOrderDetail[' + txtSerialNum + '].IsPack" id="isPack' + txtSerialNum + '"><option value="false">Piece</option><option value="true" selected>Pack</option></select></td>' +
+            '<td><select class="form-control" name="SaleOrderDetail[' + txtSerialNum + '].IsPack" id="isPack' + txtSerialNum + '"><option value="false">Piece</option><option value="true" selected>Box</option></select></td>' +
             '<td><input type="text" class="form-control" readonly autocomplete="off" name="SaleOrderDetail[' + txtSerialNum + '].PerPack" id="perPack' + txtSerialNum + '"></td>' +
 
             '<td><input type="text" readonly class="form-control classBGcolor" name="itemTotal' + txtSerialNum + '" id="itemTotal' + txtSerialNum + '"tabindex="-1"></td>' +

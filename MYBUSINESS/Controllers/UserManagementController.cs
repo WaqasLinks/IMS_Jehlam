@@ -58,7 +58,15 @@ namespace MYBUSINESS.Controllers
                 //user = db.Employees.FirstOrDefault();
                 Session.Add("CurrentUser", user);
                 //return RedirectToAction("Create", "SOSR",new {IsReturn="false" });//change it from 'if condtion' to here
-                return RedirectToAction("Index", "Dashboard");//change it from 'if condtion' to here
+                if (user != null && user.Login.ToUpper() == "ADMIN")
+                {
+                    return RedirectToAction("Index", "Dashboard");//change it from 'if condtion' to here
+                }
+                else if (user != null && user.Login.ToUpper() == "SALES")
+                {
+                    return RedirectToAction("Index", "SOSR");//change it from 'if condtion' to here
+                }
+                return RedirectToAction("Index", "Dashboard");
                 //return View("Index", "DashBoard",user);
             }
             else
@@ -66,9 +74,10 @@ namespace MYBUSINESS.Controllers
                 TempData["message"] = "Password is not valid";
                 return RedirectToAction("Login", "UserManagement");
             }
+
             
             //return RedirectToAction("RecoverPassword", "UserManagement");
-            
+
             //return RenderAction("Login", "UserManagement");
         }
 

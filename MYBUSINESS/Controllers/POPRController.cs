@@ -852,7 +852,7 @@ namespace MYBUSINESS.Controllers
                                 Value = "false"
                             },
                             new MyUnitType {
-                                Text = "Pack",
+                                Text = "Box",
                                 Value = "true"
                             }
                         };

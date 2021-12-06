@@ -123,7 +123,7 @@ $(document).ready(function () {
             '<td><input type="text" class="form-control" autocomplete="off" name="name' + txtSerialNum + '" id="name' + txtSerialNum + '"></td>' +
             '<td><input type="text"  class="form-control autocomplete="off" classBGcolor" name="PurchaseOrderDetail[' + txtSerialNum + '].PurchasePrice" id="purchasePrice' + txtSerialNum + '"></td>' +
             '<td><input type="text" class="form-control" autocomplete="off" name="PurchaseOrderDetail[' + txtSerialNum + '].Quantity" id="quantity' + txtSerialNum + '"></td>' +
-            '<td><select class="form-control" name="PurchaseOrderDetail[' + txtSerialNum + '].IsPack" id="isPack' + txtSerialNum + '"><option value="false">Piece</option><option value="true" selected>Pack</option></select></td>' +
+            '<td><select class="form-control" name="PurchaseOrderDetail[' + txtSerialNum + '].IsPack" id="isPack' + txtSerialNum + '"><option value="false">Piece</option><option value="true" selected>Box</option></select></td>' +
             '<td><input type="text" class="form-control" readonly autocomplete="off" name="PurchaseOrderDetail[' + txtSerialNum + '].PerPack" id="perPack' + txtSerialNum + '"></td>' +
 
             '<td><input type="text" readonly class="form-control classBGcolor" name="itemTotal' + txtSerialNum + '" id="itemTotal' + txtSerialNum + '"tabindex="-1"></td>' +

@@ -24,7 +24,7 @@ namespace MYBUSINESS.Models
         [DisplayName("Purchase Price")]
         decimal PurchasePrice { get; set; }
 
-        [DisplayName("Per Pack")]
+        [DisplayName("Per Box")]
         [Range(1, int.MaxValue, ErrorMessage = "Please enter a value more than 0")]
         Nullable<int> PerPack { get; set; }
 
